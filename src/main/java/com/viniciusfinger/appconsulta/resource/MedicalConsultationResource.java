@@ -24,8 +24,18 @@ public class MedicalConsultationResource {
         return service.findAll();
     }
 
+    @GetMapping("/{id}")
+    public ResponseEntity<MedicalConsultation> findById(@PathVariable Long id){
+        return service.findById(id);
+    }
+
     @PostMapping
     public ResponseEntity<MedicalConsultation> scheduleMedicalConsultation(@RequestBody MedicalConsultationDTO medicalConsultationDTO){
         return service.scheduleMedicalConsultation(medicalConsultationDTO);
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<?> delete(@PathVariable Long id){
+        return service.delete(id);
     }
 }
