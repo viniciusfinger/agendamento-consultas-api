@@ -1,0 +1,329 @@
+{
+	"info": {
+		"_postman_id": "9b8ed84a-08cf-49a6-aa68-44c77a61f8e8",
+		"name": "iMed",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Patient",
+			"item": [
+				{
+					"name": "Find All Patients",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/patients",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"patients"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Find Patient by ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/patients/1",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"patients",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Insert Patient",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\":\"viniciusfinger\",\r\n    \"password\":\"12345\",\r\n    \"totalAppointment\":5,\r\n    \"onlineStatus\":\"false\" \r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/patients",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"patients"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Patient by Id",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\":\"viniciusfinger2\",\r\n    \"password\":\"12345\",\r\n    \"totalAppointment\":5,\r\n    \"onlineStatus\":\"false\" \r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/patients/1",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"patients",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Patient by Id",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/patients/1",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"patients",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Healthcare Professional",
+			"item": [
+				{
+					"name": "Find All Healthcare Professionals",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/healthcareProfessionals",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"healthcareProfessionals"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Find Healthcare Professional by ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/healthcareProfessionals/1",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"healthcareProfessionals",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Insert Healthcare Professional",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\":\"Arnaldo filho teste\",\r\n    \"status\":\"Atendendo\",\r\n    \"rating\":5,\r\n    \"crm\":\"12345/SP\" \r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/healthcareProfessionals",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"healthcareProfessionals"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Healthcare Professional by Id",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\":\"Arnaldo filho teste\",\r\n    \"status\":\"TESTE\",\r\n    \"rating\":4.5,\r\n    \"crm\":\"12345/SP\" \r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/healthcareProfessionals/1",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"healthcareProfessionals",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Healthcare Professional by Id",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/healthcareProfessionals/1",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"healthcareProfessionals",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Medical Consultation",
+			"item": [
+				{
+					"name": "Find all Medical Consultations Copy",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/medicalConsultations",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"medicalConsultations"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Find Medical Consultations by Id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/medicalConsultations/1",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"medicalConsultations",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Schedule Medical Consultation",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"idHealthcareProfessional\":1,\r\n    \"idPatient\":1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/medicalConsultations",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"medicalConsultations"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Medical Consultations by Id",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/medicalConsultations/1",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"medicalConsultations",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
