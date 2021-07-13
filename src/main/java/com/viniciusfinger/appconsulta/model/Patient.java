@@ -1,5 +1,6 @@
 package com.viniciusfinger.appconsulta.model;
 
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -10,6 +11,8 @@ import java.time.ZonedDateTime;
 @Entity
 @Data
 @Builder
+@AllArgsConstructor
+@NoArgsConstructor
 public class Patient {
 
     @Id
@@ -22,15 +25,4 @@ public class Patient {
     private Integer totalAppointment;
     private Boolean onlineStatus;
 
-    public Patient() {
-    }
-
-    public Patient(Long id, ZonedDateTime dateCreated, String username, String password, Integer totalAppointment, Boolean onlineStatus) {
-        this.id = id;
-        this.dateCreated = dateCreated;
-        this.username = username;
-        this.password = password;
-        this.totalAppointment = totalAppointment;
-        this.onlineStatus = onlineStatus;
-    }
 }

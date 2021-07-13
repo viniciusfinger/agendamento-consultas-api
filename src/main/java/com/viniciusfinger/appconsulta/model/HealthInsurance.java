@@ -1,23 +1,19 @@
 package com.viniciusfinger.appconsulta.model;
 
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.time.ZonedDateTime;
 
 @Entity
 @Data
 @Builder
+@AllArgsConstructor
+@NoArgsConstructor
 public class HealthInsurance {
-
-    public HealthInsurance(){
-
-    }
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -27,11 +23,4 @@ public class HealthInsurance {
     private String cnpj;
     private Float price;
 
-    public HealthInsurance(Long id, ZonedDateTime dateCreated, String name, String cnpj, Float price) {
-        this.id = id;
-        this.dateCreated = dateCreated;
-        this.name = name;
-        this.cnpj = cnpj;
-        this.price = price;
-    }
 }

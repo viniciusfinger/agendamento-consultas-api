@@ -1,8 +1,10 @@
 package com.viniciusfinger.appconsulta.model;
 
 
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.time.ZonedDateTime;
@@ -10,6 +12,8 @@ import java.time.ZonedDateTime;
 @Entity
 @Builder
 @Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class MedicalConsultation {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -22,18 +26,6 @@ public class MedicalConsultation {
     private Patient patient;
 
     private ZonedDateTime consultationDate;
-
     private ZonedDateTime dateCreated;
 
-    public MedicalConsultation() {
-
-    }
-
-    public MedicalConsultation(Long id, HealthcareProfessional healthcareProfessional, Patient patient, ZonedDateTime consultationDate, ZonedDateTime dateCreated) {
-        this.id = id;
-        this.healthcareProfessional = healthcareProfessional;
-        this.patient = patient;
-        this.consultationDate = consultationDate;
-        this.dateCreated = dateCreated;
-    }
 }
