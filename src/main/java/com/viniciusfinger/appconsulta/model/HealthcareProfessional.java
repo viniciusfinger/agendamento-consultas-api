@@ -16,6 +16,15 @@ import java.time.ZonedDateTime;
 @Builder
 public class HealthcareProfessional {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    private ZonedDateTime dateCreated;
+    private String name;
+    private String status;
+    private Integer rating;
+    private String crm;
+
     public HealthcareProfessional(){
 
     }
@@ -28,16 +37,6 @@ public class HealthcareProfessional {
         this.rating = rating;
         this.crm = crm;
     }
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-    private ZonedDateTime dateCreated;
-    private String name;
-    private String status;
-    private Integer rating;
-    private String crm;
-
 
 
 }

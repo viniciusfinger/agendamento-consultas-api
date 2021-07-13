@@ -1,9 +1,9 @@
 package com.viniciusfinger.appconsulta.model.dto;
 
 import com.viniciusfinger.appconsulta.model.Patient;
-import lombok.Getter;
+import lombok.Data;
 
-@Getter
+@Data
 public class PatientDTO {
     private Long id;
     private String username;
