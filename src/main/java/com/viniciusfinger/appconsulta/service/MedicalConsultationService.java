@@ -23,12 +23,13 @@ public class MedicalConsultationService {
     public ResponseEntity<MedicalConsultation> scheduleMedicalConsultation(MedicalConsultationDTO medicalConsultationDTO) {
         Patient patient = Patient.builder().id(medicalConsultationDTO.getIdPatient()).build();
 
+
         HealthcareProfessional healthcareProfessional = HealthcareProfessional.builder()
                                                         .id(medicalConsultationDTO.getIdHealthcareProfessional())
                                                         .build();
 
         MedicalConsultation medicalConsultation = MedicalConsultation.builder()
-                                                .consultationDate(ZonedDateTime.now())
+                                                .consultationDate(medicalConsultationDTO.getDateDTO().toZonedDateTime())
                                                 .dateCreated(ZonedDateTime.now())
                                                 .patient(patient)
                                                 .healthcareProfessional(healthcareProfessional)
@@ -39,7 +40,7 @@ public class MedicalConsultationService {
         return ResponseEntity.ok(medicalConsultation);
     }
 
-    public ResponseEntity<?> delete(Long id){
+    public ResponseEntity<?> unscheduleMedicalConsultation(Long id){
         Optional<MedicalConsultation> medicalConsultationOptional = repository.findById(id);
         if(medicalConsultationOptional.isEmpty()){
             return ResponseEntity.noContent().build();

@@ -11,5 +11,5 @@ public class MedicalConsultationDTO {
     private Long id;
     private Long idHealthcareProfessional;
     private Long idPatient;
-    private ZonedDateTime consultationDate;
+    private DateDTO dateDTO;
 }

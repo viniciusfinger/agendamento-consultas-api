@@ -35,7 +35,7 @@ public class MedicalConsultationResource {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<?> delete(@PathVariable Long id){
-        return service.delete(id);
+    public ResponseEntity<?> unscheduleMedicalConsultation(@PathVariable Long id){
+        return service.unscheduleMedicalConsultation(id);
     }
 }

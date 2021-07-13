@@ -40,4 +40,9 @@ public class HealthcareProfessionalResource {
     public ResponseEntity<HealthcareProfessional> update(@RequestBody HealthcareProfessionalDTO updatedHealthcareProfessionalDTO, @PathVariable  Long id){
         return service.update(updatedHealthcareProfessionalDTO, id);
     }
+
+    @GetMapping("/byPatient/{patientId}")
+    public ResponseEntity<List<HealthcareProfessional>> getByPatientId(@PathVariable Long patientId){
+        return service.findHealthcareProfessionalByPatient(patientId);
+    }
 }
