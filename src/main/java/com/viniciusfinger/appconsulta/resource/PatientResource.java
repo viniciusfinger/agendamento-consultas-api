@@ -26,18 +26,43 @@ public class PatientResource {
         return service.findById(id);
     }
 
+    @GetMapping("/online")
+    public ResponseEntity<List<Patient>> findAllOnline(){
+        return service.findAllOnline();
+    }
+
+    @GetMapping("/busy")
+    public ResponseEntity<List<Patient>> FindAllBusy(){
+        return service.findAllBusy();
+    }
+
+    @GetMapping("/offline")
+    public ResponseEntity<List<Patient>> FindAllOffline(){
+        return service.findAllOffline();
+    }
+
+    @GetMapping("/username/{username}")
+    public ResponseEntity<Patient> findByUsername(@PathVariable String username){
+        return service.findByUsername(username);
+    }
+
+    @GetMapping("/crmProfessional/{crmProfessional}")
+    public ResponseEntity<List<Patient>> findByCrmProfessional(@PathVariable String crmProfessional){
+        return service.findByCrmProfessional(crmProfessional);
+    }
+
     @PostMapping
     public ResponseEntity<Patient> save(@RequestBody PatientDTO patientDTO) {
         return service.save(patientDTO);
     }
 
-    @DeleteMapping("/{id}")
-    public ResponseEntity<?> delete(@PathVariable Long id){
-        return service.delete(id);
-    }
-
     @PutMapping("/{id}")
     public ResponseEntity<Patient> update(@RequestBody PatientDTO updatedPatientDTO, @PathVariable  Long id){
         return service.update(updatedPatientDTO, id);
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<?> delete(@PathVariable Long id){
+        return service.delete(id);
     }
 }
