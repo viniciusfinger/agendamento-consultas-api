@@ -27,6 +27,84 @@
 					"response": []
 				},
 				{
+					"name": "Find Patient by CRM of Professional",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/patients/crmProfessional/12341SP",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"patients",
+								"crmProfessional",
+								"12341SP"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Find Patient by Professional Name",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/patients/professionalName/tania",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"patients",
+								"professionalName",
+								"tania"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Find Online Patients",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/patients/online",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"patients",
+								"online"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Find Busy Patients",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/patients/busy",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"patients",
+								"busy"
+							]
+						}
+					},
+					"response": []
+				},
+				{
 					"name": "Find Patient by ID",
 					"request": {
 						"method": "GET",
