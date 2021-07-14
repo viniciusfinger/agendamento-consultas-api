@@ -42,7 +42,7 @@ public class HealthcareProfessionalResource {
     }
 
     @GetMapping("/byPatient/{patientId}")
-    public ResponseEntity<List<HealthcareProfessional>> getByPatientId(@PathVariable Long patientId){
+    public ResponseEntity<List<HealthcareProfessional>> findHealthcareProfessionalByPatient(@PathVariable Long patientId){
         return service.findHealthcareProfessionalByPatient(patientId);
     }
 }

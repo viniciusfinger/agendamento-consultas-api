@@ -1,13 +1,14 @@
 package com.viniciusfinger.appconsulta.service;
 
+import com.viniciusfinger.appconsulta.model.HealthInsurance;
 import com.viniciusfinger.appconsulta.model.HealthcareProfessional;
 import com.viniciusfinger.appconsulta.model.MedicalConsultation;
 import com.viniciusfinger.appconsulta.model.Patient;
 import com.viniciusfinger.appconsulta.model.dto.MedicalConsultationDTO;
 import com.viniciusfinger.appconsulta.model.exception.ProfessionalAlreadyInUseException;
+import com.viniciusfinger.appconsulta.repository.HealthInsuranceRepository;
+import com.viniciusfinger.appconsulta.repository.HealthcareProfessionalRepository;
 import com.viniciusfinger.appconsulta.repository.MedicalConsultationRepository;
-import com.viniciusfinger.appconsulta.repository.PatientRepository;
-import org.apache.coyote.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
@@ -21,13 +22,22 @@ public class MedicalConsultationService {
     @Autowired
     private MedicalConsultationRepository repository;
 
+    @Autowired
+    private HealthcareProfessionalRepository healthcareProfessionalRepository;
+
+    @Autowired
+    private HealthInsuranceRepository healthInsuranceRepository;
+
     public ResponseEntity<MedicalConsultation> scheduleMedicalConsultation(MedicalConsultationDTO medicalConsultationDTO) throws ProfessionalAlreadyInUseException {
         Patient patient = Patient.builder().id(medicalConsultationDTO.getIdPatient()).build();
+        HealthInsurance healthInsuranceOfPatient = healthInsuranceRepository.findById(medicalConsultationDTO.getIdHealthInsurance()).get();
 
+        HealthcareProfessional healthcareProfessional = healthcareProfessionalRepository.findById(medicalConsultationDTO.getIdHealthcareProfessional()).get();
+        List<HealthInsurance> professionalHealthInsuranceList = healthcareProfessional.getHealthInsurance();
 
-        HealthcareProfessional healthcareProfessional = HealthcareProfessional.builder()
-                                                        .id(medicalConsultationDTO.getIdHealthcareProfessional())
-                                                        .build();
+        if (!professionalHealthInsuranceList.contains(healthInsuranceOfPatient)){
+            return ResponseEntity.badRequest().build();
+        }
 
         List<MedicalConsultation> medicalConsultationList = repository.findByHealthcareProfessionalAndDoneIsFalse(healthcareProfessional);
 
@@ -84,4 +94,3 @@ public class MedicalConsultationService {
         }
     }
 }
-

@@ -1,11 +1,8 @@
 package com.viniciusfinger.appconsulta.service;
 
 import com.viniciusfinger.appconsulta.model.HealthcareProfessional;
-import com.viniciusfinger.appconsulta.model.Patient;
 import com.viniciusfinger.appconsulta.model.dto.HealthcareProfessionalDTO;
-import com.viniciusfinger.appconsulta.model.dto.PatientDTO;
 import com.viniciusfinger.appconsulta.repository.HealthcareProfessionalRepository;
-import com.viniciusfinger.appconsulta.repository.PatientRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
@@ -70,7 +67,6 @@ public class HealthcareProfessionalService {
             healthcareProfessional.setCrm(healthcareProfessionalDTO.getCrm());
             healthcareProfessional.setRating(healthcareProfessionalDTO.getRating());
             healthcareProfessional.setStatus(healthcareProfessionalDTO.getStatusDTO().toStatus());
-
             repository.save(healthcareProfessional);
             return ResponseEntity.ok(healthcareProfessional);
         }
