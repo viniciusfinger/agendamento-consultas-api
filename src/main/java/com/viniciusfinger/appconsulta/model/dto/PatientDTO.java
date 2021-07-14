@@ -9,7 +9,7 @@ public class PatientDTO {
     private String username;
     private String password;
     private Integer totalAppointment;
-    private Boolean onlineStatus;
+    private StatusDTO statusDTO;
 
     public Patient toPatient(){
         return Patient.builder()
@@ -17,7 +17,7 @@ public class PatientDTO {
                 .username(this.getUsername())
                 .password(this.getPassword())
                 .totalAppointment(this.getTotalAppointment())
-                .onlineStatus(this.getOnlineStatus())
+                .status(this.statusDTO.toStatus())
                 .build();
     }
 }

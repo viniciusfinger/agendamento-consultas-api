@@ -23,6 +23,8 @@ public class Patient {
     private String username;
     private String password;
     private Integer totalAppointment;
-    private Boolean onlineStatus;
+
+    @OneToOne
+    private Status status;
 
 }

@@ -52,7 +52,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"username\":\"viniciusfinger\",\r\n    \"password\":\"12345\",\r\n    \"totalAppointment\":5,\r\n    \"onlineStatus\":\"false\" \r\n}",
+							"raw": "{\r\n    \"username\":\"viniciusfinger\",\r\n    \"password\":\"12345\",\r\n    \"totalAppointment\":5,\r\n    \"statusDTO\":{\r\n        \"id\":1\r\n    }\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -79,7 +79,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"username\":\"viniciusfinger2\",\r\n    \"password\":\"12345\",\r\n    \"totalAppointment\":5,\r\n    \"onlineStatus\":\"false\" \r\n}",
+							"raw": "{\r\n    \"username\":\"viniciusfinger2\",\r\n    \"password\":\"12345\",\r\n    \"totalAppointment\":5,\r\n    \"statusDTO\":{\r\n        \"id\":2\r\n    }\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -304,7 +304,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"idHealthcareProfessional\":4,\r\n    \"idPatient\":1,\r\n    \"dateDTO\":{\r\n        \"year\":2021,\r\n        \"month\":7,\r\n        \"day\":15,\r\n        \"hour\":15,\r\n        \"minute\":30,\r\n        \"zoneId\":\"America/Sao_Paulo\"\r\n    }\r\n}",
+							"raw": "{\r\n    \"idHealthcareProfessional\":5,\r\n    \"idPatient\":1,\r\n    \"idHealthInsurance\":2,\r\n    \"dateDTO\":{\r\n        \"year\":2021,\r\n        \"month\":7,\r\n        \"day\":15,\r\n        \"hour\":15,\r\n        \"minute\":30,\r\n        \"zoneId\":\"America/Sao_Paulo\"\r\n    }\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -330,7 +330,7 @@
 						"method": "POST",
 						"header": [],
 						"url": {
-							"raw": "localhost:8080/medicalConsultations/finish/4",
+							"raw": "localhost:8080/medicalConsultations/finish/1",
 							"host": [
 								"localhost"
 							],
@@ -338,7 +338,7 @@
 							"path": [
 								"medicalConsultations",
 								"finish",
-								"4"
+								"1"
 							]
 						}
 					},

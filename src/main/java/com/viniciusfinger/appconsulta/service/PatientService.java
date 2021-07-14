@@ -65,7 +65,7 @@ public class PatientService {
             Patient patient = patientOptional.get();
             patient.setUsername(patientDTO.getUsername());
             patient.setPassword(patientDTO.getPassword());
-            patient.setOnlineStatus(patientDTO.getOnlineStatus());
+            patient.setStatus(patientDTO.getStatusDTO().toStatus());
             patient.setTotalAppointment(patientDTO.getTotalAppointment());
 
             repository.save(patient);
