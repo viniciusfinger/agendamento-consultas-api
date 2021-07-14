@@ -5,8 +5,10 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+
 import javax.persistence.*;
 import java.time.ZonedDateTime;
+import java.util.List;
 
 @Entity
 @Data
@@ -21,7 +23,15 @@ public class HealthcareProfessional {
 
     private ZonedDateTime dateCreated;
     private String name;
-    private String status;
     private Integer rating;
+
+    @OneToOne
+    private Status status;
+
     private String crm;
+
+
+
+    @ManyToMany
+    private List<HealthInsurance> healthInsurance;
 }

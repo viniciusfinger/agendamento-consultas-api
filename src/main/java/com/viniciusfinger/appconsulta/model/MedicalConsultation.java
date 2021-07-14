@@ -27,5 +27,5 @@ public class MedicalConsultation {
 
     private ZonedDateTime consultationDate;
     private ZonedDateTime dateCreated;
-
+    private Boolean done;
 }

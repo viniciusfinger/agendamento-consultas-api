@@ -4,6 +4,7 @@ import com.viniciusfinger.appconsulta.model.HealthcareProfessional;
 import com.viniciusfinger.appconsulta.model.MedicalConsultation;
 import com.viniciusfinger.appconsulta.model.Patient;
 import com.viniciusfinger.appconsulta.model.dto.MedicalConsultationDTO;
+import com.viniciusfinger.appconsulta.model.exception.ProfessionalAlreadyInUseException;
 import com.viniciusfinger.appconsulta.repository.MedicalConsultationRepository;
 import com.viniciusfinger.appconsulta.repository.PatientRepository;
 import org.apache.coyote.Response;
@@ -20,7 +21,7 @@ public class MedicalConsultationService {
     @Autowired
     private MedicalConsultationRepository repository;
 
-    public ResponseEntity<MedicalConsultation> scheduleMedicalConsultation(MedicalConsultationDTO medicalConsultationDTO) {
+    public ResponseEntity<MedicalConsultation> scheduleMedicalConsultation(MedicalConsultationDTO medicalConsultationDTO) throws ProfessionalAlreadyInUseException {
         Patient patient = Patient.builder().id(medicalConsultationDTO.getIdPatient()).build();
 
 
@@ -28,16 +29,23 @@ public class MedicalConsultationService {
                                                         .id(medicalConsultationDTO.getIdHealthcareProfessional())
                                                         .build();
 
-        MedicalConsultation medicalConsultation = MedicalConsultation.builder()
-                                                .consultationDate(medicalConsultationDTO.getDateDTO().toZonedDateTime())
-                                                .dateCreated(ZonedDateTime.now())
-                                                .patient(patient)
-                                                .healthcareProfessional(healthcareProfessional)
-                                                .build();
+        List<MedicalConsultation> medicalConsultationList = repository.findByHealthcareProfessionalAndDoneIsFalse(healthcareProfessional);
 
-        medicalConsultation = repository.save(medicalConsultation);
+        if (medicalConsultationList.isEmpty()){
+            MedicalConsultation medicalConsultation = MedicalConsultation.builder()
+                    .consultationDate(medicalConsultationDTO.getDateDTO().toZonedDateTime())
+                    .dateCreated(ZonedDateTime.now())
+                    .patient(patient)
+                    .done(false)
+                    .healthcareProfessional(healthcareProfessional)
+                    .build();
 
-        return ResponseEntity.ok(medicalConsultation);
+            medicalConsultation = repository.save(medicalConsultation);
+
+            return ResponseEntity.ok(medicalConsultation);
+        } else {
+            throw new ProfessionalAlreadyInUseException();
+        }
     }
 
     public ResponseEntity<?> unscheduleMedicalConsultation(Long id){
@@ -47,6 +55,18 @@ public class MedicalConsultationService {
         } else {
             repository.delete(medicalConsultationOptional.get());
             return ResponseEntity.ok().build();
+        }
+    }
+
+    public ResponseEntity<MedicalConsultation> finish(Long id){
+        Optional<MedicalConsultation> medicalConsultationOptional = repository.findById(id);
+        if(medicalConsultationOptional.isEmpty()){
+            return ResponseEntity.noContent().build();
+        } else {
+            MedicalConsultation medicalConsultation = medicalConsultationOptional.get();
+            medicalConsultation.setDone(true);
+            repository.save(medicalConsultation);
+            return ResponseEntity.ok(medicalConsultation);
         }
     }
 

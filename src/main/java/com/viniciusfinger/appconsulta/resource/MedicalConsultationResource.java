@@ -30,12 +30,17 @@ public class MedicalConsultationResource {
     }
 
     @PostMapping
-    public ResponseEntity<MedicalConsultation> scheduleMedicalConsultation(@RequestBody MedicalConsultationDTO medicalConsultationDTO){
+    public ResponseEntity<MedicalConsultation> scheduleMedicalConsultation(@RequestBody MedicalConsultationDTO medicalConsultationDTO) throws Exception {
         return service.scheduleMedicalConsultation(medicalConsultationDTO);
     }
 
     @DeleteMapping("/{id}")
     public ResponseEntity<?> unscheduleMedicalConsultation(@PathVariable Long id){
         return service.unscheduleMedicalConsultation(id);
+    }
+
+    @PostMapping("/finish/{id}")
+    public ResponseEntity<MedicalConsultation> finish(@PathVariable Long id){
+        return service.finish(id);
     }
 }

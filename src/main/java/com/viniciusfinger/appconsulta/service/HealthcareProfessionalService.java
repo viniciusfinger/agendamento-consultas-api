@@ -69,7 +69,7 @@ public class HealthcareProfessionalService {
             healthcareProfessional.setName(healthcareProfessionalDTO.getName());
             healthcareProfessional.setCrm(healthcareProfessionalDTO.getCrm());
             healthcareProfessional.setRating(healthcareProfessionalDTO.getRating());
-            healthcareProfessional.setStatus(healthcareProfessionalDTO.getStatus());
+            healthcareProfessional.setStatus(healthcareProfessionalDTO.getStatusDTO().toStatus());
 
             repository.save(healthcareProfessional);
             return ResponseEntity.ok(healthcareProfessional);

@@ -143,6 +143,26 @@
 					"response": []
 				},
 				{
+					"name": "Find Healthcare Professional by Patient ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/healthcareProfessionals/byPatient/1",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"healthcareProfessionals",
+								"byPatient",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
 					"name": "Find Healthcare Professional by ID",
 					"request": {
 						"method": "GET",
@@ -168,7 +188,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"name\":\"Arnaldo filho teste\",\r\n    \"status\":\"Atendendo\",\r\n    \"rating\":5,\r\n    \"crm\":\"12345/SP\" \r\n}",
+							"raw": "{\r\n    \"name\":\"Tania Teste\",\r\n    \"statusDTO\":{\r\n        \"id\":1\r\n    },\r\n    \"rating\":5,\r\n    \"crm\":\"12341/SP\" \r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -241,7 +261,7 @@
 			"name": "Medical Consultation",
 			"item": [
 				{
-					"name": "Find all Medical Consultations Copy",
+					"name": "Find all Medical Consultations",
 					"request": {
 						"method": "GET",
 						"header": [],
@@ -284,7 +304,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"idHealthcareProfessional\":1,\r\n    \"idPatient\":1\r\n}",
+							"raw": "{\r\n    \"idHealthcareProfessional\":4,\r\n    \"idPatient\":1,\r\n    \"dateDTO\":{\r\n        \"year\":2021,\r\n        \"month\":7,\r\n        \"day\":15,\r\n        \"hour\":15,\r\n        \"minute\":30,\r\n        \"zoneId\":\"America/Sao_Paulo\"\r\n    }\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -305,7 +325,27 @@
 					"response": []
 				},
 				{
-					"name": "Delete Medical Consultations by Id",
+					"name": "Finish Medical Consultation",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/medicalConsultations/finish/4",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"medicalConsultations",
+								"finish",
+								"4"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Unschedule Medical Consultations by Id",
 					"request": {
 						"method": "DELETE",
 						"header": [],

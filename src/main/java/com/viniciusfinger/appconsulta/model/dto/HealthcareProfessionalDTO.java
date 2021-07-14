@@ -7,7 +7,7 @@ import lombok.Data;
 public class HealthcareProfessionalDTO {
     private Long id;
     private String name;
-    private String status;
+    private StatusDTO statusDTO;
     private Integer rating;
     private String crm;
 
@@ -15,7 +15,7 @@ public class HealthcareProfessionalDTO {
         return HealthcareProfessional.builder()
                 .id(this.getId())
                 .name(this.getName())
-                .status(this.getStatus())
+                .status(this.statusDTO.toStatus())
                 .rating(this.getRating())
                 .crm(this.getCrm())
                 .build();
