@@ -29,7 +29,7 @@ public class MedicalConsultationService {
     private HealthInsuranceRepository healthInsuranceRepository;
 
     public ResponseEntity<MedicalConsultation> scheduleMedicalConsultation(MedicalConsultationDTO medicalConsultationDTO) throws ProfessionalAlreadyInUseException {
-        Patient patient = Patient.builder().id(medicalConsultationDTO.getIdPatient()).build();
+        Patient patient = Patient.builder().username(medicalConsultationDTO.getUsernamePatient()).build();
         HealthInsurance healthInsuranceOfPatient = healthInsuranceRepository.findById(medicalConsultationDTO.getIdHealthInsurance()).get();
 
         HealthcareProfessional healthcareProfessional = healthcareProfessionalRepository.findById(medicalConsultationDTO.getIdHealthcareProfessional()).get();

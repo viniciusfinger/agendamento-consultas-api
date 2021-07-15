@@ -23,10 +23,10 @@ public class PatientResource {
         return service.findAll();
     }
 
-    @GetMapping("/{id}")
-    @ApiOperation(value = "Return a Patient by Id")
-    public ResponseEntity<Patient> findById(@PathVariable Long id) {
-        return service.findById(id);
+    @GetMapping("/{username}")
+    @ApiOperation(value = "Return a Patient by username")
+    public ResponseEntity<Patient> findById(@PathVariable String username) {
+        return service.findById(username);
     }
 
     @GetMapping("/online")
@@ -47,11 +47,6 @@ public class PatientResource {
         return service.findAllOffline();
     }
 
-    @GetMapping("/username/{username}")
-    @ApiOperation(value = "Return a Patient by username")
-    public ResponseEntity<Patient> findByUsername(@PathVariable String username){
-        return service.findByUsername(username);
-    }
 
     @GetMapping("/crmProfessional/{crmProfessional}")
     @ApiOperation(value = "Return a Patient by crm of Healthcare Professional")
@@ -65,15 +60,15 @@ public class PatientResource {
         return service.save(patientDTO);
     }
 
-    @PutMapping("/{id}")
+    @PutMapping
     @ApiOperation(value = "Update a Patient by Id")
-    public ResponseEntity<Patient> update(@RequestBody PatientDTO updatedPatientDTO, @PathVariable  Long id){
-        return service.update(updatedPatientDTO, id);
+    public ResponseEntity<Patient> update(@RequestBody PatientDTO updatedPatientDTO){
+        return service.update(updatedPatientDTO);
     }
 
-    @DeleteMapping("/{id}")
-    @ApiOperation(value = "Delete a Patient by Id")
-    public ResponseEntity<?> delete(@PathVariable Long id){
-        return service.delete(id);
+    @DeleteMapping("/{username}")
+    @ApiOperation(value = "Delete a Patient by username")
+    public ResponseEntity<?> delete(@PathVariable String username){
+        return service.delete(username);
     }
 }

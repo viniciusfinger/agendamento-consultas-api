@@ -118,7 +118,7 @@
 					"response": []
 				},
 				{
-					"name": "Find Patient by ID",
+					"name": "Find Patient by username",
 					"request": {
 						"auth": {
 							"type": "bearer",
@@ -133,14 +133,14 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "localhost:8080/patients/1",
+							"raw": "localhost:8080/patients/viniciusfinger",
 							"host": [
 								"localhost"
 							],
 							"port": "8080",
 							"path": [
 								"patients",
-								"1"
+								"viniciusfinger"
 							]
 						}
 					},
@@ -149,6 +149,16 @@
 				{
 					"name": "Insert Patient",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImV4cCI6MTYyNzI0NDA2OX0.Teq1BnyRMboVjKt6Bi2jFbzJKyQBVQpA3c-A9eE52iZbo38XXaLiT72UlaMPBG2_ASzRl8gdA6CH_w-4qpEsiQ",
+									"type": "string"
+								}
+							]
+						},
 						"method": "POST",
 						"header": [],
 						"body": {
@@ -174,13 +184,23 @@
 					"response": []
 				},
 				{
-					"name": "Update Patient by Id",
+					"name": "Update Patient",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImV4cCI6MTYyNzI0NDA2OX0.Teq1BnyRMboVjKt6Bi2jFbzJKyQBVQpA3c-A9eE52iZbo38XXaLiT72UlaMPBG2_ASzRl8gdA6CH_w-4qpEsiQ",
+									"type": "string"
+								}
+							]
+						},
 						"method": "PUT",
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"username\":\"viniciusfinger2\",\r\n    \"password\":\"12345\",\r\n    \"totalAppointment\":5,\r\n    \"statusDTO\":{\r\n        \"id\":2\r\n    }\r\n}",
+							"raw": "{\r\n    \"username\":\"viniciusfinger\",\r\n    \"password\":\"123456\",\r\n    \"totalAppointment\":5,\r\n    \"statusDTO\":{\r\n        \"id\":1\r\n    }\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -188,33 +208,43 @@
 							}
 						},
 						"url": {
-							"raw": "localhost:8080/patients/1",
+							"raw": "localhost:8080/patients/",
 							"host": [
 								"localhost"
 							],
 							"port": "8080",
 							"path": [
 								"patients",
-								"1"
+								""
 							]
 						}
 					},
 					"response": []
 				},
 				{
-					"name": "Delete Patient by Id",
+					"name": "Delete Patient by Username",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImV4cCI6MTYyNzI0NDA2OX0.Teq1BnyRMboVjKt6Bi2jFbzJKyQBVQpA3c-A9eE52iZbo38XXaLiT72UlaMPBG2_ASzRl8gdA6CH_w-4qpEsiQ",
+									"type": "string"
+								}
+							]
+						},
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "localhost:8080/patients/1",
+							"raw": "localhost:8080/patients/viniciusfinger",
 							"host": [
 								"localhost"
 							],
 							"port": "8080",
 							"path": [
 								"patients",
-								"1"
+								"viniciusfinger"
 							]
 						}
 					},

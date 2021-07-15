@@ -11,8 +11,8 @@ public interface HealthcareProfessionalRepository extends JpaRepository<Healthca
     @Query(
             value = "SELECT HP.* FROM HEALTHCARE_PROFESSIONAL HP " +
                     "JOIN MEDICAL_CONSULTATION MC ON MC.HEALTHCARE_PROFESSIONAL_ID = HP.ID " +
-                    "JOIN PATIENT P ON MC.PATIENT_ID = P.ID " +
-                    "WHERE P.ID=?1 ",
+                    "JOIN PATIENT P ON MC.PATIENT_USERNAME = P.USERNAME " +
+                    "WHERE P.USERNAME=?1 ",
             nativeQuery = true)
-    List<HealthcareProfessional> findHealthcareProfessionalByPatient(Long idPatient);
+    List<HealthcareProfessional> findHealthcareProfessionalByPatient(String patientUsername);
 }

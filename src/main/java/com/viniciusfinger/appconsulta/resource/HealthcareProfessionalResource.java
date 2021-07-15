@@ -50,9 +50,9 @@ public class HealthcareProfessionalResource {
         return service.update(updatedHealthcareProfessionalDTO, id);
     }
 
-    @GetMapping("/byPatient/{patientId}")
-    @ApiOperation(value = "Return Healthcare Professionals by Patient")
-    public ResponseEntity<List<HealthcareProfessional>> findHealthcareProfessionalByPatient(@PathVariable Long patientId){
-        return service.findHealthcareProfessionalByPatient(patientId);
+    @GetMapping("/byPatient/{patientUseranme}")
+    @ApiOperation(value = "Return Healthcare Professionals by Patient username")
+    public ResponseEntity<List<HealthcareProfessional>> findHealthcareProfessionalByPatient(@PathVariable String username){
+        return service.findHealthcareProfessionalByPatient(username);
     }
 }

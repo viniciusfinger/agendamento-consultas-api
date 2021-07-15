@@ -32,8 +32,8 @@ public class PatientService {
         }
     }
 
-    public ResponseEntity<Patient> findById(Long id){
-        Optional<Patient> patientOptional = patientRepository.findById(id);
+    public ResponseEntity<Patient> findById(String  username){
+        Optional<Patient> patientOptional = patientRepository.findByUsername(username);
 
         if (patientOptional.isEmpty()){
             return ResponseEntity.noContent().build();
@@ -45,12 +45,13 @@ public class PatientService {
     public ResponseEntity<Patient> save(PatientDTO patientDTO) {
         Patient patient = patientDTO.toPatient();
         patient.setDateCreated(ZonedDateTime.now());
+        patient.setEnabled(true);
         Patient newPatient = patientRepository.save(patient);
         return ResponseEntity.ok(newPatient);
     }
 
-    public ResponseEntity<?> delete(Long id){
-        Optional<Patient> patientOptional = patientRepository.findById(id);
+    public ResponseEntity<?> delete(String username){
+        Optional<Patient> patientOptional = patientRepository.findByUsername(username);
         if(patientOptional.isEmpty()){
             return ResponseEntity.noContent().build();
         } else {
@@ -59,8 +60,8 @@ public class PatientService {
         }
     }
 
-    public ResponseEntity<Patient> update(PatientDTO patientDTO, Long id){
-        Optional<Patient> patientOptional = patientRepository.findById(id);
+    public ResponseEntity<Patient> update(PatientDTO patientDTO){
+        Optional<Patient> patientOptional = patientRepository.findByUsername(patientDTO.getUsername());
 
         if(patientOptional.isEmpty()){
             return ResponseEntity.noContent().build();

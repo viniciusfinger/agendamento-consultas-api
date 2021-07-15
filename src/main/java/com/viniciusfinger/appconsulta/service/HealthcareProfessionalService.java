@@ -72,8 +72,8 @@ public class HealthcareProfessionalService {
         }
     }
 
-    public ResponseEntity<List<HealthcareProfessional>> findHealthcareProfessionalByPatient(Long patientId){
-        List<HealthcareProfessional> healthcareProfessionalList = repository.findHealthcareProfessionalByPatient(patientId);
+    public ResponseEntity<List<HealthcareProfessional>> findHealthcareProfessionalByPatient(String patientUsername){
+        List<HealthcareProfessional> healthcareProfessionalList = repository.findHealthcareProfessionalByPatient(patientUsername);
         return ResponseEntity.ok(healthcareProfessionalList);
     }
 }

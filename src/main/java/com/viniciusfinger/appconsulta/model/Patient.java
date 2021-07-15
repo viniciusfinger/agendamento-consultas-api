@@ -15,14 +15,14 @@ import java.time.ZonedDateTime;
 @NoArgsConstructor
 public class Patient {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
 
-    private ZonedDateTime dateCreated;
+    @Id
     private String username;
+
     private String password;
+    private ZonedDateTime dateCreated;
     private Integer totalAppointment;
+    private Boolean enabled;
 
     @OneToOne
     private Status status;

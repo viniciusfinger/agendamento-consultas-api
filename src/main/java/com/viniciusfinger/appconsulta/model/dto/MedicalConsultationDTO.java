@@ -7,7 +7,7 @@ import lombok.Data;
 public class MedicalConsultationDTO {
     private Long id;
     private Long idHealthcareProfessional;
-    private Long idPatient;
+    private String usernamePatient;
     private Long idHealthInsurance;
     private DateDTO dateDTO;
 }
