@@ -154,7 +154,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImV4cCI6MTYyNzI0NDA2OX0.Teq1BnyRMboVjKt6Bi2jFbzJKyQBVQpA3c-A9eE52iZbo38XXaLiT72UlaMPBG2_ASzRl8gdA6CH_w-4qpEsiQ",
+									"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ2aW5pY2l1c2ZpbmdlciIsImV4cCI6MTYyNzI0OTk0Nn0.3A1xabBsmOxyKpi-5XZ3MyanZcL-A0LeZH4-3kB2u0nX1z6QeVB0WMzXny9U2xWlj1PLy4u0gYyNq44IhU-t6A",
 									"type": "string"
 								}
 							]
@@ -163,7 +163,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"username\":\"viniciusfinger\",\r\n    \"password\":\"12345\",\r\n    \"totalAppointment\":5,\r\n    \"statusDTO\":{\r\n        \"id\":1\r\n    }\r\n}",
+							"raw": "{\r\n    \"username\":\"admin\",\r\n    \"password\":\"12345\",\r\n    \"totalAppointment\":5,\r\n    \"statusDTO\":{\r\n        \"id\":1\r\n    }\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -519,7 +519,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"username\":\"admin\",\r\n    \"password\":\"password\"\r\n}",
+							"raw": "{\r\n    \"username\":\"admin\",\r\n    \"password\":\"12345\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
