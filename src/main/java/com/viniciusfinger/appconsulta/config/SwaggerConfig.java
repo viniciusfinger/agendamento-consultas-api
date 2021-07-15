@@ -38,7 +38,7 @@ public class SwaggerConfig {
                 "REST API for consultation schedul.e",
                 "1.0",
                 "Terms of Service",
-                new Contact("Vinicius finger", "https://www.github.com/viniciusfinger",
+                new Contact("Vinicius Finger", "https://www.github.com/viniciusfinger",
                         "fingervinicius@icloud.com"),
                 "Apache License Version 2.0",
                 "https://www.apache.org/licesen.html", new ArrayList<VendorExtension>()
