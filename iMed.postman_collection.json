@@ -11,6 +11,16 @@
 				{
 					"name": "Find All Patients",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImV4cCI6MTYyNzE2ODU0OH0.E7SqEucpVXK_PYaz_llKl5rbwgnQV1X5Czq8byi1IlKpGsg0lW_7xwGvaSOG-X-aMu8tiMHMxP5iZMagpFpUZw",
+									"type": "string"
+								}
+							]
+						},
 						"method": "GET",
 						"header": [],
 						"url": {
@@ -88,6 +98,9 @@
 				{
 					"name": "Find Busy Patients",
 					"request": {
+						"auth": {
+							"type": "noauth"
+						},
 						"method": "GET",
 						"header": [],
 						"url": {
@@ -107,6 +120,16 @@
 				{
 					"name": "Find Patient by ID",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImV4cCI6MTYyNzE2ODU0OH0.E7SqEucpVXK_PYaz_llKl5rbwgnQV1X5Czq8byi1IlKpGsg0lW_7xwGvaSOG-X-aMu8tiMHMxP5iZMagpFpUZw",
+									"type": "string"
+								}
+							]
+						},
 						"method": "GET",
 						"header": [],
 						"url": {
@@ -378,6 +401,16 @@
 				{
 					"name": "Schedule Medical Consultation",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImV4cCI6MTYyNzE2ODU0OH0.E7SqEucpVXK_PYaz_llKl5rbwgnQV1X5Czq8byi1IlKpGsg0lW_7xwGvaSOG-X-aMu8tiMHMxP5iZMagpFpUZw",
+									"type": "string"
+								}
+							]
+						},
 						"method": "POST",
 						"header": [],
 						"body": {
@@ -436,6 +469,41 @@
 							"path": [
 								"medicalConsultations",
 								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Authentication",
+			"item": [
+				{
+					"name": "Login to get token",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\":\"admin\",\r\n    \"password\":\"password\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/login",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"login"
 							]
 						}
 					},
