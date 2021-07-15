@@ -7,6 +7,7 @@ import com.viniciusfinger.appconsulta.repository.PatientRepository;
 import com.viniciusfinger.appconsulta.repository.StatusRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.time.ZonedDateTime;
@@ -21,6 +22,9 @@ public class PatientService {
 
     @Autowired
     private StatusRepository statusRepository;
+
+    @Autowired
+    private PasswordEncoder passwordEncoder;
 
     public ResponseEntity<List<Patient>> findAll(){
         List<Patient> patientList = patientRepository.findAll();
@@ -43,6 +47,7 @@ public class PatientService {
     }
 
     public ResponseEntity<Patient> save(PatientDTO patientDTO) {
+        patientDTO.setPassword(passwordEncoder.encode(patientDTO.getPassword()));
         Patient patient = patientDTO.toPatient();
         patient.setDateCreated(ZonedDateTime.now());
         patient.setEnabled(true);
@@ -68,7 +73,7 @@ public class PatientService {
         } else {
             Patient patient = patientOptional.get();
             patient.setUsername(patientDTO.getUsername());
-            patient.setPassword(patientDTO.getPassword());
+            patient.setPassword(passwordEncoder.encode(patientDTO.getPassword()));
             patient.setStatus(patientDTO.getStatusDTO().toStatus());
             patient.setTotalAppointment(patientDTO.getTotalAppointment());
 

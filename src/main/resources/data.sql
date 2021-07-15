@@ -1,0 +1,1 @@
+insert into status (name) values ('Online'),('Busy'),('Offine');
