@@ -1,6 +1,7 @@
-package com.viniciusfinger.appconsulta.model;
+package com.viniciusfinger.appconsulta.security;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.viniciusfinger.appconsulta.model.Patient;
 import com.viniciusfinger.appconsulta.service.TokenAuthenticationService;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;

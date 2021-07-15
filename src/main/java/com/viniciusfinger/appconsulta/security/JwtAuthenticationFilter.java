@@ -1,4 +1,4 @@
-package com.viniciusfinger.appconsulta.model;
+package com.viniciusfinger.appconsulta.security;
 
 import java.io.IOException;
 

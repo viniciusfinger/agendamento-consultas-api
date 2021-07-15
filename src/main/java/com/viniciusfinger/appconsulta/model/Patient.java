@@ -1,15 +1,13 @@
 package com.viniciusfinger.appconsulta.model;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import lombok.*;
 
 import javax.persistence.*;
 import java.time.ZonedDateTime;
 
 @Entity
-@Data
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
@@ -17,14 +15,25 @@ public class Patient {
 
 
     @Id
-    private String username;
+    @Getter @Setter private String username;
 
+    @JsonIgnore
     private String password;
-    private ZonedDateTime dateCreated;
-    private Integer totalAppointment;
-    private Boolean enabled;
+
+    @Getter @Setter private ZonedDateTime dateCreated;
+    @Getter @Setter private Integer totalAppointment;
+    @Getter @Setter private Boolean enabled;
 
     @OneToOne
-    private Status status;
+    @Getter @Setter private Status status;
 
+    @JsonIgnore
+    public String getPassword() {
+        return password;
+    }
+
+    @JsonProperty
+    public void setPassword(String password) {
+        this.password = password;
+    }
 }
