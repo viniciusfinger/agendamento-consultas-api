@@ -6,6 +6,7 @@ import com.viniciusfinger.appconsulta.model.MedicalConsultation;
 import com.viniciusfinger.appconsulta.model.Patient;
 import com.viniciusfinger.appconsulta.model.dto.MedicalConsultationDTO;
 import com.viniciusfinger.appconsulta.model.exception.ProfessionalAlreadyInUseException;
+import com.viniciusfinger.appconsulta.model.exception.UnsupportedHealthInsuranceException;
 import com.viniciusfinger.appconsulta.repository.HealthInsuranceRepository;
 import com.viniciusfinger.appconsulta.repository.HealthcareProfessionalRepository;
 import com.viniciusfinger.appconsulta.repository.MedicalConsultationRepository;
@@ -28,7 +29,7 @@ public class MedicalConsultationService {
     @Autowired
     private HealthInsuranceRepository healthInsuranceRepository;
 
-    public ResponseEntity<MedicalConsultation> scheduleMedicalConsultation(MedicalConsultationDTO medicalConsultationDTO) throws ProfessionalAlreadyInUseException {
+    public ResponseEntity<MedicalConsultation> scheduleMedicalConsultation(MedicalConsultationDTO medicalConsultationDTO) throws ProfessionalAlreadyInUseException, UnsupportedHealthInsuranceException {
         Patient patient = Patient.builder().username(medicalConsultationDTO.getUsernamePatient()).build();
         HealthInsurance healthInsuranceOfPatient = healthInsuranceRepository.findById(medicalConsultationDTO.getIdHealthInsurance()).get();
 
@@ -36,7 +37,7 @@ public class MedicalConsultationService {
         List<HealthInsurance> professionalHealthInsuranceList = healthcareProfessional.getHealthInsurance();
 
         if (!professionalHealthInsuranceList.contains(healthInsuranceOfPatient)){
-            return ResponseEntity.badRequest().build();
+            throw new UnsupportedHealthInsuranceException();
         }
 
         List<MedicalConsultation> medicalConsultationList = repository.findByHealthcareProfessionalAndDoneIsFalse(healthcareProfessional);
