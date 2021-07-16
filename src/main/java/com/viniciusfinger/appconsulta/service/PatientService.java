@@ -3,6 +3,7 @@ package com.viniciusfinger.appconsulta.service;
 import com.viniciusfinger.appconsulta.model.Patient;
 import com.viniciusfinger.appconsulta.model.Status;
 import com.viniciusfinger.appconsulta.model.dto.PatientDTO;
+import com.viniciusfinger.appconsulta.repository.AuthenticationRepository;
 import com.viniciusfinger.appconsulta.repository.PatientRepository;
 import com.viniciusfinger.appconsulta.repository.StatusRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,11 +25,13 @@ public class PatientService {
     private StatusRepository statusRepository;
 
     @Autowired
+    private AuthenticationRepository authenticationRepository;
+
+    @Autowired
     private PasswordEncoder passwordEncoder;
 
     public ResponseEntity<List<Patient>> findAll(){
         List<Patient> patientList = patientRepository.findAll();
-
         if (patientList.isEmpty()) {
             return ResponseEntity.noContent().build();
         } else {
@@ -36,7 +39,7 @@ public class PatientService {
         }
     }
 
-    public ResponseEntity<Patient> findById(String  username){
+    public ResponseEntity<Patient> findByUsername(String  username){
         Optional<Patient> patientOptional = patientRepository.findByUsername(username);
 
         if (patientOptional.isEmpty()){
@@ -51,7 +54,10 @@ public class PatientService {
         Patient patient = patientDTO.toPatient();
         patient.setDateCreated(ZonedDateTime.now());
         patient.setEnabled(true);
+
         Patient newPatient = patientRepository.save(patient);
+        authenticationRepository.insertAuth(patient.getUsername());
+
         return ResponseEntity.ok(newPatient);
     }
 
@@ -98,16 +104,6 @@ public class PatientService {
         Status status = statusRepository.findByName("Offline");
         List<Patient> patients = patientRepository.findAllByStatus(status);
         return ResponseEntity.ok(patients);
-    }
-
-    public ResponseEntity<Patient> findByUsername(String username) {
-        Optional<Patient> patientOptional = patientRepository.findByUsername(username);
-        if(patientOptional.isEmpty()){
-            return ResponseEntity.noContent().build();
-        } else {
-            Patient patient = patientOptional.get();
-            return ResponseEntity.ok(patient);
-        }
     }
 
     public ResponseEntity<List<Patient>> findByCrmProfessional(String crmProfessional) {

@@ -26,7 +26,7 @@ public class PatientResource {
     @GetMapping("/{username}")
     @ApiOperation(value = "Return a Patient by username")
     public ResponseEntity<Patient> findById(@PathVariable String username) {
-        return service.findById(username);
+        return service.findByUsername(username);
     }
 
     @GetMapping("/online")
